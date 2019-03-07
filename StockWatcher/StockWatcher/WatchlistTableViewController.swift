@@ -20,15 +20,24 @@ class WatchlistTableViewController: UITableViewController {
     
     @objc func addNewStockSymbol() {
         let stock = Stock(context: persistenceManager.context)
-        stock.symbol = "ATT"
+        stock.symbol = "XOM"
         persistenceManager.saveContext()
+    }
+    
+    func deleteStockAtIndexPath() {
+        let row = 0
+        let stockToBeDeleted = stockSymbols[row]
+        persistenceManager.context.delete(stockToBeDeleted)
+        persistenceManager.saveContext()
+        stockSymbols = persistenceManager.fetch(Stock.self)
+        tableView.reloadData()
     }
     
     func fetchStockSymbols() {
         //fetch from Core Data:
         stockSymbols = persistenceManager.fetch(Stock.self)
         for s in stockSymbols {
-            print(s.symbol)
+            //print(s.symbol)
         }
     }
     
@@ -45,8 +54,9 @@ class WatchlistTableViewController: UITableViewController {
         super.viewDidLoad()
         setupNavBar()
         tableView.register(StockTableViewCell.classForCoder(), forCellReuseIdentifier: Constants.stockCellReuseIdentifier )
-        addNewStockSymbol()
+        //addNewStockSymbol()
         fetchStockSymbols()
+        deleteStockAtIndexPath()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
