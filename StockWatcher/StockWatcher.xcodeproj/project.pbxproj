@@ -16,6 +16,7 @@
 		D375C9F4223052A70003DBC2 /* Stock+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375C9F2223052A70003DBC2 /* Stock+CoreDataClass.swift */; };
 		D375C9F5223052A70003DBC2 /* Stock+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375C9F3223052A70003DBC2 /* Stock+CoreDataProperties.swift */; };
 		D375C9F72230534C0003DBC2 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375C9F62230534C0003DBC2 /* PersistenceManager.swift */; };
+		D384663122319CC400BDFC19 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384663022319CC400BDFC19 /* StockTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D375C9F2223052A70003DBC2 /* Stock+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D375C9F3223052A70003DBC2 /* Stock+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D375C9F62230534C0003DBC2 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		D384663022319CC400BDFC19 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				D375C9D9222F81C20003DBC2 /* AppDelegate.swift */,
 				D375C9EE223040430003DBC2 /* WatchlistTableViewController.swift */,
+				D384663022319CC400BDFC19 /* StockTableViewCell.swift */,
 				D375C9F022304BAF0003DBC2 /* StockDataFetcherManager.swift */,
 				D375C9F2223052A70003DBC2 /* Stock+CoreDataClass.swift */,
 				D375C9F3223052A70003DBC2 /* Stock+CoreDataProperties.swift */,
@@ -148,6 +151,7 @@
 			files = (
 				D375C9F4223052A70003DBC2 /* Stock+CoreDataClass.swift in Sources */,
 				D375C9F72230534C0003DBC2 /* PersistenceManager.swift in Sources */,
+				D384663122319CC400BDFC19 /* StockTableViewCell.swift in Sources */,
 				D375C9EF223040430003DBC2 /* WatchlistTableViewController.swift in Sources */,
 				D375C9F5223052A70003DBC2 /* Stock+CoreDataProperties.swift in Sources */,
 				D375C9F122304BAF0003DBC2 /* StockDataFetcherManager.swift in Sources */,
