@@ -8,37 +8,38 @@ class WatchlistTableViewController: UITableViewController {
     }
     
     var persistenceManager: PersistanceManager!
-    
-    let dataFetcher = StockDataFetcherManager()
+    let dataFetcher = APIFetchManager()
     var stockSymbols = [Stock]()
     
     func setupNavBar() {
         self.navigationItem.title = "My Watchlist"
-        let addNewStockBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: #selector(addNewStockSymbol), action: nil)
+        let addNewStockBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewStockSymbol))
         self.navigationItem.rightBarButtonItem  = addNewStockBarButtonItem
     }
     
     @objc func addNewStockSymbol() {
         let stock = Stock(context: persistenceManager.context)
-        stock.symbol = "XOM"
+        stock.symbol = "APPL"
         persistenceManager.saveContext()
+        fetchStockSymbols()
+        tableView.reloadData()
     }
     
-    func deleteStockAtIndexPath() {
-        let row = 0
+    func deleteStockAt(indexPath: IndexPath) {
+        let row = indexPath.row
         let stockToBeDeleted = stockSymbols[row]
+        
         persistenceManager.context.delete(stockToBeDeleted)
         persistenceManager.saveContext()
-        stockSymbols = persistenceManager.fetch(Stock.self)
-        tableView.reloadData()
+        
+        stockSymbols.remove(at: row)
+        
+        tableView.deleteRows(at: [indexPath], with: .fade)
     }
     
     func fetchStockSymbols() {
         //fetch from Core Data:
         stockSymbols = persistenceManager.fetch(Stock.self)
-        for s in stockSymbols {
-            //print(s.symbol)
-        }
     }
     
     init(persistenceManager: PersistanceManager) {
@@ -53,10 +54,16 @@ class WatchlistTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
-        tableView.register(StockTableViewCell.classForCoder(), forCellReuseIdentifier: Constants.stockCellReuseIdentifier )
-        //addNewStockSymbol()
+        tableView.register(StockTableViewCell.classForCoder(), forCellReuseIdentifier: Constants.stockCellReuseIdentifier)
         fetchStockSymbols()
-        deleteStockAtIndexPath()
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.deleteStockAt(indexPath: indexPath)
+        }
+        
+        return [delete]
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
