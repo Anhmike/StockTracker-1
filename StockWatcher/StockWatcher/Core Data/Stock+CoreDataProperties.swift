@@ -8,5 +8,6 @@ extension Stock {
     }
 
     @NSManaged public var symbol: String
+    @NSManaged public var percentChanged: String?
 
 }

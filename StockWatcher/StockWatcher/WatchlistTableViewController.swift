@@ -19,7 +19,7 @@ class WatchlistTableViewController: UITableViewController {
     
     @objc func addNewStockSymbol() {
         let stock = Stock(context: persistenceManager.context)
-        stock.symbol = "APPL"
+        stock.symbol = "GOOG0"
         persistenceManager.saveContext()
         fetchStockSymbols()
         tableView.reloadData()
@@ -56,6 +56,7 @@ class WatchlistTableViewController: UITableViewController {
         setupNavBar()
         tableView.register(StockTableViewCell.classForCoder(), forCellReuseIdentifier: Constants.stockCellReuseIdentifier)
         fetchStockSymbols()
+        dataFetcher.getDataFor(stock: stockSymbols.first)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

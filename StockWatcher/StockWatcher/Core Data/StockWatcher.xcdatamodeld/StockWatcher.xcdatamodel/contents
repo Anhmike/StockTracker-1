@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Stock" representedClassName=".Stock" syncable="YES">
+        <attribute name="percentChange" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="symbol" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Stock" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="Stock" positionX="-63" positionY="-18" width="128" height="75"/>
     </elements>
 </model>
