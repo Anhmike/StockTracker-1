@@ -9,7 +9,11 @@ class WatchlistTableViewController: UITableViewController {
     
     var persistenceManager: PersistanceManager!
     let dataFetcher = APIFetchManager()
-    var stockSymbols = [Stock]()
+    var stocks = [Stock]()
+    
+    func registerTableViewCells() {
+        tableView.register(StockTableViewCell.classForCoder(), forCellReuseIdentifier: Constants.stockCellReuseIdentifier)
+    }
     
     func setupNavBar() {
         self.navigationItem.title = "My Watchlist"
@@ -19,28 +23,38 @@ class WatchlistTableViewController: UITableViewController {
     
     @objc func addNewStockSymbol() {
         let stock = Stock(context: persistenceManager.context)
-        stock.symbol = "GOOG0"
+        stock.symbol = "MSFT"
         persistenceManager.saveContext()
-        fetchStockSymbols()
+        fetchStockSymbolsFromDatabase()
         tableView.reloadData()
     }
     
     func deleteStockAt(indexPath: IndexPath) {
         let row = indexPath.row
-        let stockToBeDeleted = stockSymbols[row]
+        let stockToBeDeleted = stocks[row]
         
         persistenceManager.context.delete(stockToBeDeleted)
         persistenceManager.saveContext()
         
-        stockSymbols.remove(at: row)
+        stocks.remove(at: row)
         
         tableView.deleteRows(at: [indexPath], with: .fade)
     }
     
-    func fetchStockSymbols() {
+    func fetchStockSymbolsFromDatabase() {
         //fetch from Core Data:
-        stockSymbols = persistenceManager.fetch(Stock.self)
+        stocks = persistenceManager.fetch(Stock.self)
     }
+    
+    func updateAndLoadStocks() {
+        let dispatchGroup = DispatchGroup()
+        dataFetcher.updateStocks(stocks: stocks,dispatchGroup: dispatchGroup)
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+    }
+    
+    //Init methods:
     
     init(persistenceManager: PersistanceManager) {
         self.persistenceManager = persistenceManager
@@ -54,31 +68,29 @@ class WatchlistTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
-        tableView.register(StockTableViewCell.classForCoder(), forCellReuseIdentifier: Constants.stockCellReuseIdentifier)
-        fetchStockSymbols()
-        dataFetcher.getDataFor(stock: stockSymbols.first)
+        registerTableViewCells()
+        fetchStockSymbolsFromDatabase()
+        updateAndLoadStocks()
     }
+    
+    //Tableview methods:
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             self.deleteStockAt(indexPath: indexPath)
         }
-        
         return [delete]
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.stockCellReuseIdentifier, for: indexPath) as! StockTableViewCell
-        cell.symbolLabel.text = stockSymbols[indexPath.row].symbol
+        cell.symbolLabel.text = stocks[indexPath.row].symbol
+        cell.percentChangeLabel.text = stocks[indexPath.row].percentChange
         return cell
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stockSymbols.count
+        return stocks.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
