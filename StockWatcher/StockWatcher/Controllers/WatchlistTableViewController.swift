@@ -9,6 +9,7 @@ class WatchlistTableViewController: UITableViewController {
     
     var persistenceManager: PersistanceManager!
     let dataFetcher = APIFetchManager()
+    
     var stocks = [Stock]()
     
     func registerTableViewCells() {
@@ -26,7 +27,7 @@ class WatchlistTableViewController: UITableViewController {
         stock.symbol = "MSFT"
         persistenceManager.saveContext()
         fetchStockSymbolsFromDatabase()
-        tableView.reloadData()
+        updateAndLoad(stocks: [stock])
     }
     
     func deleteStockAt(indexPath: IndexPath) {
@@ -38,19 +39,24 @@ class WatchlistTableViewController: UITableViewController {
         
         stocks.remove(at: row)
         
-        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     func fetchStockSymbolsFromDatabase() {
-        //fetch from Core Data:
         stocks = persistenceManager.fetch(Stock.self)
     }
     
-    func updateAndLoadStocks() {
+    func updateAndLoad(stocks: [Stock]) {
+        guard stocks.count > 0 else { return }
+        
         let dispatchGroup = DispatchGroup()
         dataFetcher.updateStocks(stocks: stocks,dispatchGroup: dispatchGroup)
         dispatchGroup.notify(queue: .main) {
-            self.tableView.reloadData()
+            if stocks.count == 1 {
+                self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+            } else {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -70,7 +76,7 @@ class WatchlistTableViewController: UITableViewController {
         setupNavBar()
         registerTableViewCells()
         fetchStockSymbolsFromDatabase()
-        updateAndLoadStocks()
+        updateAndLoad(stocks: stocks)
     }
     
     //Tableview methods:

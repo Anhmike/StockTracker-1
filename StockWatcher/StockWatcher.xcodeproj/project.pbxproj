@@ -93,15 +93,23 @@
 			isa = PBXGroup;
 			children = (
 				D375C9D9222F81C20003DBC2 /* AppDelegate.swift */,
-				D375C9EE223040430003DBC2 /* WatchlistTableViewController.swift */,
-				D307E77F2232EFA2000DCEE6 /* TableViewCells */,
+				D3CDCA0B2242C66C000C97C1 /* Controllers */,
 				D307E77D2232EF04000DCEE6 /* Managers */,
+				D307E77F2232EFA2000DCEE6 /* TableViewCells */,
 				D307E77E2232EF6F000DCEE6 /* Core Data */,
 				D375C9E3222F81C50003DBC2 /* Assets.xcassets */,
 				D375C9E5222F81C50003DBC2 /* LaunchScreen.storyboard */,
 				D375C9E8222F81C50003DBC2 /* Info.plist */,
 			);
 			path = StockWatcher;
+			sourceTree = "<group>";
+		};
+		D3CDCA0B2242C66C000C97C1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D375C9EE223040430003DBC2 /* WatchlistTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
