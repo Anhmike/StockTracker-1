@@ -2,18 +2,13 @@ import UIKit
 
 class WatchlistTableViewController: UITableViewController {
     
-    private struct Constants {
-        static let heightForRow = CGFloat(80)
-        static let stockCellReuseIdentifier = "StockTableViewCellID"
-    }
-    
+    let apiManager = APIManager()
     var persistenceManager: PersistanceManager!
-    let dataFetcher = APIFetchManager()
     
     var stocks = [Stock]()
     
     func registerTableViewCells() {
-        tableView.register(StockTableViewCell.classForCoder(), forCellReuseIdentifier: Constants.stockCellReuseIdentifier)
+        tableView.register(StockTableViewCell.classForCoder(), forCellReuseIdentifier: WatchListConstants.TableViewCell.ReuseIdentifier)
     }
     
     func setupNavBar() {
@@ -23,11 +18,17 @@ class WatchlistTableViewController: UITableViewController {
     }
     
     @objc func addNewStockSymbol() {
+        /*
         let stock = Stock(context: persistenceManager.context)
         stock.symbol = "MSFT"
         persistenceManager.saveContext()
         fetchStockSymbolsFromDatabase()
         updateAndLoad(stocks: [stock])
+        */
+        
+        let editStockListScreen = EditStockListTableViewController(apiManager: apiManager, persistenceManager: persistenceManager, stocks: stocks)
+        navigationController?.pushViewController(editStockListScreen, animated: true)
+        
     }
     
     func deleteStockAt(indexPath: IndexPath) {
@@ -50,7 +51,7 @@ class WatchlistTableViewController: UITableViewController {
         guard stocks.count > 0 else { return }
 
         let dispatchGroup = DispatchGroup()
-        dataFetcher.updateStocks(stocks: stocks,dispatchGroup: dispatchGroup)
+        apiManager.updateStocks(stocks: stocks,dispatchGroup: dispatchGroup)
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
         }
@@ -86,7 +87,7 @@ class WatchlistTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.stockCellReuseIdentifier, for: indexPath) as! StockTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: WatchListConstants.TableViewCell.ReuseIdentifier, for: indexPath) as! StockTableViewCell
         cell.symbolLabel.text = stocks[indexPath.row].symbol
         cell.percentChangeLabel.text = stocks[indexPath.row].percentChange
         return cell
@@ -97,6 +98,6 @@ class WatchlistTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.heightForRow
+        return WatchListConstants.TableViewCell.height
     }
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-class APIFetchManager {
+class APIManager {
     
     private var dispatchGroup: DispatchGroup!
     

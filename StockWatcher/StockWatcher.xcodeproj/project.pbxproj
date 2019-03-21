@@ -7,20 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D34C38C92243FF9200CBF5A8 /* EditStockListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34C38C82243FF9200CBF5A8 /* EditStockListTableViewController.swift */; };
+		D34C38CE2244004B00CBF5A8 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34C38CC2244004B00CBF5A8 /* APIManager.swift */; };
+		D34C38CF2244004B00CBF5A8 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34C38CD2244004B00CBF5A8 /* PersistenceManager.swift */; };
+		D34C38D1224401BF00CBF5A8 /* WatchListConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34C38D0224401BF00CBF5A8 /* WatchListConstants.swift */; };
 		D375C9DA222F81C20003DBC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375C9D9222F81C20003DBC2 /* AppDelegate.swift */; };
 		D375C9E2222F81C20003DBC2 /* StockWatcher.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D375C9E0222F81C20003DBC2 /* StockWatcher.xcdatamodeld */; };
 		D375C9E4222F81C50003DBC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D375C9E3222F81C50003DBC2 /* Assets.xcassets */; };
 		D375C9E7222F81C50003DBC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D375C9E5222F81C50003DBC2 /* LaunchScreen.storyboard */; };
 		D375C9EF223040430003DBC2 /* WatchlistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375C9EE223040430003DBC2 /* WatchlistTableViewController.swift */; };
-		D375C9F122304BAF0003DBC2 /* APIFetchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375C9F022304BAF0003DBC2 /* APIFetchManager.swift */; };
 		D375C9F4223052A70003DBC2 /* Stock+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375C9F2223052A70003DBC2 /* Stock+CoreDataClass.swift */; };
 		D375C9F5223052A70003DBC2 /* Stock+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375C9F3223052A70003DBC2 /* Stock+CoreDataProperties.swift */; };
-		D375C9F72230534C0003DBC2 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D375C9F62230534C0003DBC2 /* PersistenceManager.swift */; };
 		D384663122319CC400BDFC19 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D384663022319CC400BDFC19 /* StockTableViewCell.swift */; };
 		D3CDCA0D2242CF20000C97C1 /* WebAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CDCA0C2242CF20000C97C1 /* WebAPIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D34C38C82243FF9200CBF5A8 /* EditStockListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStockListTableViewController.swift; sourceTree = "<group>"; };
+		D34C38CC2244004B00CBF5A8 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		D34C38CD2244004B00CBF5A8 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		D34C38D0224401BF00CBF5A8 /* WatchListConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListConstants.swift; sourceTree = "<group>"; };
 		D375C9D6222F81C20003DBC2 /* StockWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D375C9D9222F81C20003DBC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D375C9E1222F81C20003DBC2 /* StockWatcher.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StockWatcher.xcdatamodel; sourceTree = "<group>"; };
@@ -28,10 +34,8 @@
 		D375C9E6222F81C50003DBC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D375C9E8222F81C50003DBC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D375C9EE223040430003DBC2 /* WatchlistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTableViewController.swift; sourceTree = "<group>"; };
-		D375C9F022304BAF0003DBC2 /* APIFetchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFetchManager.swift; sourceTree = "<group>"; };
 		D375C9F2223052A70003DBC2 /* Stock+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D375C9F3223052A70003DBC2 /* Stock+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D375C9F62230534C0003DBC2 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		D384663022319CC400BDFC19 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 		D3CDCA0C2242CF20000C97C1 /* WebAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,16 +51,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D307E77D2232EF04000DCEE6 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				D375C9F022304BAF0003DBC2 /* APIFetchManager.swift */,
-				D375C9F62230534C0003DBC2 /* PersistenceManager.swift */,
-			);
-			name = Managers;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		D307E77E2232EF6F000DCEE6 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,8 +73,18 @@
 			isa = PBXGroup;
 			children = (
 				D3CDCA0C2242CF20000C97C1 /* WebAPIConstants.swift */,
+				D34C38D0224401BF00CBF5A8 /* WatchListConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		D34C38CB2244004400CBF5A8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D34C38CC2244004B00CBF5A8 /* APIManager.swift */,
+				D34C38CD2244004B00CBF5A8 /* PersistenceManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		D375C9CD222F81C20003DBC2 = {
@@ -104,8 +108,8 @@
 			children = (
 				D375C9D9222F81C20003DBC2 /* AppDelegate.swift */,
 				D3CDCA0B2242C66C000C97C1 /* Controllers */,
+				D34C38CB2244004400CBF5A8 /* Managers */,
 				D34C38C32243F97100CBF5A8 /* Constants */,
-				D307E77D2232EF04000DCEE6 /* Managers */,
 				D307E77F2232EFA2000DCEE6 /* TableViewCells */,
 				D307E77E2232EF6F000DCEE6 /* Core Data */,
 				D375C9E3222F81C50003DBC2 /* Assets.xcassets */,
@@ -119,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				D375C9EE223040430003DBC2 /* WatchlistTableViewController.swift */,
+				D34C38C82243FF9200CBF5A8 /* EditStockListTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -194,11 +199,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D375C9F4223052A70003DBC2 /* Stock+CoreDataClass.swift in Sources */,
-				D375C9F72230534C0003DBC2 /* PersistenceManager.swift in Sources */,
+				D34C38CF2244004B00CBF5A8 /* PersistenceManager.swift in Sources */,
+				D34C38CE2244004B00CBF5A8 /* APIManager.swift in Sources */,
+				D34C38C92243FF9200CBF5A8 /* EditStockListTableViewController.swift in Sources */,
+				D34C38D1224401BF00CBF5A8 /* WatchListConstants.swift in Sources */,
 				D384663122319CC400BDFC19 /* StockTableViewCell.swift in Sources */,
 				D375C9EF223040430003DBC2 /* WatchlistTableViewController.swift in Sources */,
 				D375C9F5223052A70003DBC2 /* Stock+CoreDataProperties.swift in Sources */,
-				D375C9F122304BAF0003DBC2 /* APIFetchManager.swift in Sources */,
 				D375C9E2222F81C20003DBC2 /* StockWatcher.xcdatamodeld in Sources */,
 				D375C9DA222F81C20003DBC2 /* AppDelegate.swift in Sources */,
 				D3CDCA0D2242CF20000C97C1 /* WebAPIConstants.swift in Sources */,
