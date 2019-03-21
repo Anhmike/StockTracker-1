@@ -48,15 +48,11 @@ class WatchlistTableViewController: UITableViewController {
     
     func updateAndLoad(stocks: [Stock]) {
         guard stocks.count > 0 else { return }
-        
+
         let dispatchGroup = DispatchGroup()
         dataFetcher.updateStocks(stocks: stocks,dispatchGroup: dispatchGroup)
         dispatchGroup.notify(queue: .main) {
-            if stocks.count == 1 {
-                self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-            } else {
-                self.tableView.reloadData()
-            }
+            self.tableView.reloadData()
         }
     }
     
@@ -76,6 +72,7 @@ class WatchlistTableViewController: UITableViewController {
         setupNavBar()
         registerTableViewCells()
         fetchStockSymbolsFromDatabase()
+        //addNewStockSymbol()
         updateAndLoad(stocks: stocks)
     }
     
