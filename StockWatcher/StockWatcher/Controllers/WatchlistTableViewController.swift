@@ -13,8 +13,14 @@ class WatchlistTableViewController: UITableViewController {
     
     func setupNavBar() {
         self.navigationItem.title = "My Watchlist"
-        let addNewStockBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewStockSymbol))
-        self.navigationItem.rightBarButtonItem  = addNewStockBarButtonItem
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        let addNewStockBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(addNewStockSymbol))
+        self.navigationItem.rightBarButtonItem = addNewStockBarButtonItem
     }
     
     @objc func addNewStockSymbol() {
@@ -65,7 +71,7 @@ class WatchlistTableViewController: UITableViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
 
     override func viewDidLoad() {

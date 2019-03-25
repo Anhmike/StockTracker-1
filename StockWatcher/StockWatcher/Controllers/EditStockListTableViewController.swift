@@ -6,6 +6,22 @@ class EditStockListTableViewController: UITableViewController {
     var apiManager: APIManager!
     
     var stocks = [Stock]()
+    
+    func setupNavBar() {
+        self.navigationItem.title = "Edit Watchlist"
+        let addNewStockBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewStockSymbol))
+        self.navigationItem.rightBarButtonItem = addNewStockBarButtonItem
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = nil
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+    
+    @objc func addNewStockSymbol() {
+        let addNewStockScreen = AddStockTableViewController()
+        navigationController?.pushViewController(addNewStockScreen, animated: true)
+    }
 
     init(apiManager: APIManager,persistenceManager: PersistanceManager,stocks: [Stock]) {
         self.apiManager = apiManager
@@ -15,11 +31,12 @@ class EditStockListTableViewController: UITableViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavBar()
         tableView.setEditing(true, animated: true)
     }
 
